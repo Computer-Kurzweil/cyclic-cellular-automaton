@@ -1,63 +1,40 @@
-cyclic-cellular-automaton
-=========================
-
+# cyclic-cellular-automaton
 **Cyclic cellular automaton**
 
-Abstract
---------
+## Abstract
 The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers.
 
 In this system, each cell remains unchanged until some neighboring cell has a modular value exactly one unit larger than that of the cell itself, at which point it copies its neighbor's value.
 
 One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior.
 
+## Wikipedia
+* [http://en.wikipedia.org/wiki/Cyclic_cellular_automaton](http://en.wikipedia.org/wiki/Cyclic_cellular_automaton)
 
-Wikipedia
----------
-* http://en.wikipedia.org/wiki/Cyclic_cellular_automaton
+## Screenshots
 
+### Early Screen
+![Early Screen](etc/img/screen1.png)
+### Later Screen
+![Later Screen](etc/img/screen2.png)
 
-Maven Wrapper
--------------
-* [https://github.com/takari/maven-wrapper](https://github.com/takari/maven-wrapper) 
-* [https://www.baeldung.com/maven-wrapper](https://www.baeldung.com/maven-wrapper) 
+## Git Repository
+* [https://github.com/thomaswoehlke/mandelbrot](https://github.com/thomaswoehlke/mandelbrot)
+## Gradle Wrapper
+* [https://docs.gradle.org/current/userguide/gradle_wrapper.html](https://docs.gradle.org/current/userguide/gradle_wrapper.html)
 
-
-Run the Desktop Application
----------------------------
+## Run the Desktop Application
 
 ```
-git clone https://github.com/phasenraum2010/simulated-evolution.git
-cd simulated-evolution
-mvnw -Pdefault clean install exec:java
+git clone https://github.com/thomaswoehlke/cyclic-cellular-automaton.git
+cd cyclic-cellular-automaton
+./gradlew run
 ```
 
-Run the Applet Test
--------------------
+## Run the Applet Test
+
 ```
-git clone https://github.com/phasenraum2010/simulated-evolution.git
-cd simulated-evolution
-mvnw -Pdefault clean install exec:java
+git clone https://github.com/thomaswoehlke/cyclic-cellular-automaton.git
+cd cyclic-cellular-automaton
+TODO: xxx
 ```
-
-
-Project Documentation
----------------------
-* http://woehlke.org/p/cyclic-cellular-automaton
-
-Blog
-----
-* http://thomas-woehlke.blogspot.de/2016/01/cyclic-cellular-automaton.html
-
-
-DAEMON
-======
-* https://www.spektrum.de/lp/digital?gclid=EAIaIQobChMIycyDv_Sw3gIVLbHtCh2xWwBgEAAYASAAEgL7HfD_BwE
-* https://github.com/phasenraum2010/sdkman-cli
-* https://twitter.com/ThomasWoehlke
-* http://homepage.ruhr-uni-bochum.de/
-
-
-
-
-
