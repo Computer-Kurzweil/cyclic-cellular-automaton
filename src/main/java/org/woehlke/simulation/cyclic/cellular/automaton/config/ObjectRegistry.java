@@ -11,8 +11,16 @@ public class ObjectRegistry {
     private volatile CyclicCellularAutomatonCanvas canvas;
     private volatile CyclicCellularAutomatonLattice lattice;
     private volatile CyclicCellularAutomatonFrame frame;
-    private volatile CyclicCellularAutomatonConfig config;
+    private volatile Config config;
     private volatile ColorScheme colorScheme;
+
+    public ObjectRegistry() {
+        this.config = new Config(this);
+        this.lattice = new CyclicCellularAutomatonLattice(this);
+        this.canvas = new CyclicCellularAutomatonCanvas(this);
+        this.controller = new CyclicCellularAutomatonController(this);
+        this.colorScheme = new ColorScheme();
+    }
 
     public CyclicCellularAutomatonController getController() {
         return controller;
@@ -46,11 +54,11 @@ public class ObjectRegistry {
         this.frame = frame;
     }
 
-    public CyclicCellularAutomatonConfig getConfig() {
+    public Config getConfig() {
         return config;
     }
 
-    public void setConfig(CyclicCellularAutomatonConfig config) {
+    public void setConfig(Config config) {
         this.config = config;
     }
 

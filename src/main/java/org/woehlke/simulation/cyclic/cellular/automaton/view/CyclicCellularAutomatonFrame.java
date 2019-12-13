@@ -1,10 +1,6 @@
 package org.woehlke.simulation.cyclic.cellular.automaton.view;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.config.ColorScheme;
-import org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig;
 import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
-import org.woehlke.simulation.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
-import org.woehlke.simulation.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -14,7 +10,8 @@ import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
-import static org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig.TITLE;
+import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.SUBTITLE;
+import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.TITLE;
 
 /**
  * Cyclic Cellular Automaton.
@@ -38,56 +35,39 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
     public CyclicCellularAutomatonFrame() {
         super(TITLE);
         ctx.setFrame(this);
-        CyclicCellularAutomatonConfig config = new CyclicCellularAutomatonConfig(ctx);
-        ctx.setConfig(config);
-        CyclicCellularAutomatonLattice lattice = new CyclicCellularAutomatonLattice(ctx);
-        ctx.setLattice(lattice);
-        CyclicCellularAutomatonCanvas canvas = new CyclicCellularAutomatonCanvas(ctx);
-        ctx.setCanvas(canvas);
-        CyclicCellularAutomatonController controller = new CyclicCellularAutomatonController(ctx);
-        ctx.setController(controller);
-        ColorScheme colorScheme = new ColorScheme();
-        ctx.setColorScheme(colorScheme);
-        init();
-    }
-
-    public void init(){
-        JLabel title = new JLabel(TITLE);
+        PanelSubtitle subtitle = new PanelSubtitle(SUBTITLE);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         rootPane.setLayout(layout);
-        rootPane.add(title);
+        rootPane.add(subtitle);
         rootPane.add(ctx.getCanvas());
         addWindowListener(this);
-        resetView();
         ctx.getController().start();
+        showMe();
     }
 
-
-    private void resetView(){
+    public void showMe() {
         pack();
-        setBounds(ctx.getConfig().getMyBounds());
+        this.setBounds(ctx.getConfig().getFrameBounds());
         setVisible(true);
         toFront();
     }
 
     public void windowOpened(WindowEvent e) {
-
+        showMe();
     }
 
     public void windowClosing(WindowEvent e) {
-        //System.exit(0);
+        System.exit(0);
     }
 
     public void windowClosed(WindowEvent e) {
         System.exit(0);
     }
 
-    public void windowIconified(WindowEvent e) {
-
-    }
+    public void windowIconified(WindowEvent e) { }
 
     public void windowDeiconified(WindowEvent e) {
-        resetView();
+        showMe();
     }
 
     public void windowActivated(WindowEvent e) {

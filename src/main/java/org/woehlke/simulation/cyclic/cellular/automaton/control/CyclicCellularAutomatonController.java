@@ -4,7 +4,7 @@ import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
 
 import java.io.Serializable;
 
-import static org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig.THREAD_SLEEP_TIME;
+import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.THREAD_SLEEP_TIME;
 
 /**
  * Cyclic Cellular Automaton.

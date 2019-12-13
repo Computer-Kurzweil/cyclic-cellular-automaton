@@ -1,16 +1,16 @@
 package org.woehlke.simulation.cyclic.cellular.automaton.config;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.model.MyPoint;
-
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class CyclicCellularAutomatonConfig {
+public class Config {
 
     public final static String TITLE = "cyclic cellular automaton";
+
+    public final static String SUBTITLE = "cyclic cellular automaton";
 
     private final static int TITLE_HEIGHT = 30;
 
@@ -26,10 +26,10 @@ public class CyclicCellularAutomatonConfig {
 
     private final ObjectRegistry ctx;
 
-    public CyclicCellularAutomatonConfig(final ObjectRegistry ctx) {
+    public Config(final ObjectRegistry ctx) {
         this.ctx = ctx;
         try (
-            InputStream input = new FileInputStream("application.properties")) {
+            InputStream input = new FileInputStream("config.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             System.out.println(prop.getProperty("db.url"));
@@ -40,12 +40,25 @@ public class CyclicCellularAutomatonConfig {
         }
     }
 
-    public Rectangle getMyBounds(){
-        return new Rectangle(START_X, START_Y, WIDTH , HEIGHT + TITLE_HEIGHT);
+    public Rectangle getFrameBounds(){
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double height = HEIGHT;
+        double width = WIDTH;
+        double startX = (screenSize.getWidth() - height) / 2d;
+        double startY = (screenSize.getHeight() - width) / 2d;
+        int myheight = Double.valueOf(height).intValue()+TITLE_HEIGHT;
+        int mywidth = Double.valueOf(width).intValue();
+        int mystartX = Double.valueOf(startX).intValue();
+        int mystartY = Double.valueOf(startY).intValue();
+        return new Rectangle(mystartX, mystartY, mywidth, myheight);
     }
 
-    public MyPoint getWorldDimensions(){
-        return new MyPoint(WIDTH,HEIGHT);
+    public Rectangle getCanvasBounds(){
+        return new Rectangle(0, 0, WIDTH , HEIGHT);
+    }
+
+    public Point getLatticeDimensions(){
+        return new Point(WIDTH,HEIGHT);
     }
 
 }

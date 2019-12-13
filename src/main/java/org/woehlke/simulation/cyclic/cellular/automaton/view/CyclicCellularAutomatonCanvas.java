@@ -24,16 +24,17 @@ public class CyclicCellularAutomatonCanvas extends JComponent implements Seriali
 
     public CyclicCellularAutomatonCanvas(ObjectRegistry ctx) {
         this.ctx = ctx;
-        this.setSize(
-            ctx.getConfig().getWorldDimensions().getX(),
-            ctx.getConfig().getWorldDimensions().getY()
+        Dimension preferredSize = new Dimension(
+            (int) ctx.getConfig().getLatticeDimensions().getX(),
+            (int) ctx.getConfig().getLatticeDimensions().getY()
         );
+        this.setPreferredSize(preferredSize);
     }
 
     public void paint(Graphics g) {
         super.paintComponent(g);
-        for(int y=0; y < ctx.getConfig().getWorldDimensions().getY(); y++){
-            for(int x=0; x < ctx.getConfig().getWorldDimensions().getX(); x++){
+        for(int y = 0; y < ctx.getConfig().getLatticeDimensions().getY(); y++){
+            for(int x = 0; x < ctx.getConfig().getLatticeDimensions().getX(); x++){
                 int state = this.ctx.getLattice().getCellStatusFor(x,y);
                 Color stateColor = this.ctx.getColorScheme().getColorForState(state);
                 g.setColor(stateColor);

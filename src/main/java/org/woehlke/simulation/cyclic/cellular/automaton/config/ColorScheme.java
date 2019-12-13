@@ -2,7 +2,7 @@ package org.woehlke.simulation.cyclic.cellular.automaton.config;
 
 import java.awt.*;
 
-import static org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig.MAX_STATUS;
+import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.MAX_STATUS;
 
 public class ColorScheme {
 

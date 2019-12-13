@@ -2,11 +2,12 @@ package org.woehlke.simulation.cyclic.cellular.automaton.model;
 
 import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-import static org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig.MAX_STATUS;
+import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.MAX_STATUS;
 
 /**
  * Cyclic Cellular Automaton.
@@ -36,15 +37,15 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     private void initCreateLattice(){
         lattice = new int[2]
-            [this.ctx.getConfig().getWorldDimensions().getX()]
-            [this.ctx.getConfig().getWorldDimensions().getY()];
+            [(int) this.ctx.getConfig().getLatticeDimensions().getX()]
+            [(int) this.ctx.getConfig().getLatticeDimensions().getY()];
         source = 0;
         target = 1;
     }
 
     private void initFillLatticeByRandom(){
-        for(int y=0;y<this.ctx.getConfig().getWorldDimensions().getY();y++){
-            for(int x=0;x<this.ctx.getConfig().getWorldDimensions().getX();x++){
+        for(int y = 0; y<this.ctx.getConfig().getLatticeDimensions().getY(); y++){
+            for(int x = 0; x<this.ctx.getConfig().getLatticeDimensions().getX(); x++){
                 lattice[source][x][y] = random.nextInt(MAX_STATUS);
             }
         }
@@ -52,24 +53,24 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     public void step(){
         //System.out.print(".");
-        MyPoint worldDimensions = this.ctx.getConfig().getWorldDimensions();
+        Point worldDimensions = this.ctx.getConfig().getLatticeDimensions();
         for(int y = 0; y < worldDimensions.getY(); y++){
             for(int x = 0; x < worldDimensions.getX(); x++){
                 lattice[target][x][y] = lattice[source][x][y];
                 int nextState = (lattice[source][x][y] + 1) % MAX_STATUS;
-                if(nextState == lattice[source][x][(y-1+worldDimensions.getY())%worldDimensions.getY()]){
+                if(nextState == lattice[source][x][(int) ((y-1+worldDimensions.getY())%worldDimensions.getY())]){
                     lattice[target][x][y] = nextState;
                     continue;
                 }
-                if(nextState == lattice[source][(x+1+worldDimensions.getX())%worldDimensions.getX()][y]){
+                if(nextState == lattice[source][(int) ((x+1+worldDimensions.getX())%worldDimensions.getX())][y]){
                     lattice[target][x][y] = nextState;
                     continue;
                 }
-                if(nextState == lattice[source][x][(y+1+worldDimensions.getY())%worldDimensions.getY()]){
+                if(nextState == lattice[source][x][(int) ((y+1+worldDimensions.getY())%worldDimensions.getY())]){
                     lattice[target][x][y] = nextState;
                     continue;
                 }
-                if(nextState == lattice[source][(x-1+worldDimensions.getX())%worldDimensions.getX()][y]){
+                if(nextState == lattice[source][(int) ((x-1+worldDimensions.getX())%worldDimensions.getX())][y]){
                     lattice[target][x][y] = nextState;
                 }
             }
