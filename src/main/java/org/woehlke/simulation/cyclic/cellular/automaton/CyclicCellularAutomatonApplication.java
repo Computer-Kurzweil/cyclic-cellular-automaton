@@ -9,9 +9,9 @@ import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutom
  * http://thomas-woehlke.de/p/cyclic-cellular-automaton/
  * @author Thomas Woehlke
  */
-public class CyclicCellularAutomatonRunner {
+public class CyclicCellularAutomatonApplication {
 
-    private CyclicCellularAutomatonRunner() { }
+    private CyclicCellularAutomatonApplication() { }
 
     /**
      * Starting the App.

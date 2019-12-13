@@ -1,7 +1,7 @@
 package org.woehlke.simulation.cyclic.cellular.automaton.view;
 
 import org.woehlke.simulation.cyclic.cellular.automaton.model.*;
-import org.woehlke.simulation.cyclic.cellular.automaton.model.Point;
+import org.woehlke.simulation.cyclic.cellular.automaton.model.MyPoint;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,11 +23,11 @@ public class CyclicCellularAutomatonWorldCanvas extends JComponent implements Se
     private static final long serialVersionUID = -3057254130516052936L;
 
     private CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice;
-    private Point worldDimensions;
+    private MyPoint worldDimensions;
 
     private Color[] stateColor = new Color[CyclicCellularAutomatonLattice.MAX_STATUS];
 
-    public CyclicCellularAutomatonWorldCanvas(Point worldDimensions, CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice) {
+    public CyclicCellularAutomatonWorldCanvas(MyPoint worldDimensions, CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice) {
         this.worldDimensions = worldDimensions;
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
         this.cyclicCellularAutomatonLattice=cyclicCellularAutomatonLattice;
@@ -65,7 +65,7 @@ public class CyclicCellularAutomatonWorldCanvas extends JComponent implements Se
         paint(g);
     }
 
-    public Point getWorldDimensions() {
+    public MyPoint getWorldDimensions() {
         return worldDimensions;
     }
 }

@@ -13,19 +13,19 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 23:47:05
  */
-public class Point implements Serializable {
+public class MyPoint implements Serializable {
 
     private static final long serialVersionUID = 5851950573378851027L;
 
     private int x = 0;
     private int y = 0;
 
-    public Point(Point p) {
+    public MyPoint(MyPoint p) {
         this.x = p.getX();
         this.y = p.getY();
     }
 
-    public Point(int x, int y) {
+    public MyPoint(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -55,29 +55,29 @@ public class Point implements Serializable {
         }
     }
 
-    public void add(Point p) {
+    public void add(MyPoint p) {
         this.x += p.getX();
         this.y += p.getY();
     }
 
-    public void normalize(Point p) {
+    public void normalize(MyPoint p) {
         this.x %= p.getX();
         this.y %= p.getY();
     }
 
-    public Point[] getNeighbourhood(Point max){
-        Point neighbourhood[] = new Point[9];
+    public MyPoint[] getNeighbourhood(MyPoint max){
+        MyPoint neighbourhood[] = new MyPoint[9];
         int maxX = max.getX();
         int maxY = max.getY();
-        neighbourhood[0]= new Point((this.x+maxX-1) % maxX,(this.y+maxY-1) % maxY);
-        neighbourhood[1]= new Point((this.x+maxX-1) % maxX,this.y);
-        neighbourhood[2]= new Point((this.x+maxX-1) % maxX,(this.y+maxY+1) % maxY);
-        neighbourhood[3]= new Point(this.x,(this.y+maxY-1) % maxY);
-        neighbourhood[4]= new Point(this.x,this.y);
-        neighbourhood[5]= new Point(this.x,(this.y+maxY+1) % maxY);
-        neighbourhood[6]= new Point((this.x+maxX+1) % maxX,(this.y+maxY-1) % maxY);
-        neighbourhood[7]= new Point((this.x+maxX+1) % maxX,this.y);
-        neighbourhood[8]= new Point((this.x+maxX+1) % maxX,(this.y+maxY+1) % maxY);
+        neighbourhood[0]= new MyPoint((this.x+maxX-1) % maxX,(this.y+maxY-1) % maxY);
+        neighbourhood[1]= new MyPoint((this.x+maxX-1) % maxX,this.y);
+        neighbourhood[2]= new MyPoint((this.x+maxX-1) % maxX,(this.y+maxY+1) % maxY);
+        neighbourhood[3]= new MyPoint(this.x,(this.y+maxY-1) % maxY);
+        neighbourhood[4]= new MyPoint(this.x,this.y);
+        neighbourhood[5]= new MyPoint(this.x,(this.y+maxY+1) % maxY);
+        neighbourhood[6]= new MyPoint((this.x+maxX+1) % maxX,(this.y+maxY-1) % maxY);
+        neighbourhood[7]= new MyPoint((this.x+maxX+1) % maxX,this.y);
+        neighbourhood[8]= new MyPoint((this.x+maxX+1) % maxX,(this.y+maxY+1) % maxY);
         return neighbourhood;
     }
 }

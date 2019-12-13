@@ -1,6 +1,8 @@
 package org.woehlke.simulation.cyclic.cellular.automaton.view;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonApplet;
+import org.woehlke.simulation.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
+import org.woehlke.simulation.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
+import org.woehlke.simulation.cyclic.cellular.automaton.model.MyPoint;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -27,28 +29,67 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     private static final long serialVersionUID = 4357793241219932594L;
 
-    private CyclicCellularAutomatonApplet exe;
+    private final static String TITLE = "cyclic cellular automaton";
+
+    private final static int WIDTH = 640;
+    private final static int HEIGHT = 468;
+
+    private final static int START_X = 100;
+    private final static int START_Y = 100;
+
+    private CyclicCellularAutomatonController controller;
+    private CyclicCellularAutomatonWorldCanvas canvas;
+    private CyclicCellularAutomatonLattice lattice;
 
     public CyclicCellularAutomatonFrame() {
-        super("cyclic cellular automaton");
-        exe = new CyclicCellularAutomatonApplet();
-        exe.init();
-        add("Center", exe);
-        setBounds(100, 100, exe.getCanvasDimensions().getX(), exe.getCanvasDimensions().getY() + 30);
+        super(TITLE);
+
+        int scale = 2;
+        int width = 320 * scale;
+        int height = 234 * scale;
+        MyPoint worldDimensions = new MyPoint(width,height);
+        lattice = new CyclicCellularAutomatonLattice(worldDimensions);
+        canvas = new CyclicCellularAutomatonWorldCanvas(worldDimensions, lattice);
+        controller = new CyclicCellularAutomatonController(canvas, lattice);
+
+        JLabel title = new JLabel(TITLE);
+        BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
+        rootPane.setLayout(layout);
+        rootPane.add(title);
+        rootPane.add(canvas);
+
+        addWindowListener(this);
+        resetView();
+        controller.start();
+    }
+
+    private Rectangle getMyBounds(){
+        int startX = START_X;
+        int startY = START_Y;
+        int width = WIDTH;
+        int height = HEIGHT + 30;
+        return new Rectangle(startX, startY, width , height);
+    }
+
+    private MyPoint getWorldDimensions(){
+        int width = WIDTH;
+        int height = HEIGHT;
+        return new MyPoint(width,height);
+    }
+
+    private void resetView(){
         pack();
+        setBounds(getMyBounds());
         setVisible(true);
         toFront();
-        addWindowListener(this);
     }
 
     public void windowOpened(WindowEvent e) {
-        setBounds(100, 100, exe.getCanvasDimensions().getX(), exe.getCanvasDimensions().getY() + 30);
-        setVisible(true);
-        toFront();
+
     }
 
     public void windowClosing(WindowEvent e) {
-        System.exit(0);
+        //System.exit(0);
     }
 
     public void windowClosed(WindowEvent e) {
@@ -60,9 +101,7 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
     }
 
     public void windowDeiconified(WindowEvent e) {
-        setBounds(100, 100, exe.getCanvasDimensions().getX(), exe.getCanvasDimensions().getY() + 30);
-        setVisible(true);
-        toFront();
+        resetView();
     }
 
     public void windowActivated(WindowEvent e) {

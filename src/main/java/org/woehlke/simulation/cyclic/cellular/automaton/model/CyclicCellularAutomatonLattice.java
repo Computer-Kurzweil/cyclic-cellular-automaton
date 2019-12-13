@@ -16,7 +16,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
     private static final long serialVersionUID = -594681595882016258L;
 
     public final static int MAX_STATUS = 13;
-    private Point worldDimensions;
+    private MyPoint worldDimensions;
     private Random random;
 
     private int[][][] lattice;
@@ -24,7 +24,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
     private volatile int target;
 
 
-    public CyclicCellularAutomatonLattice(Point worldDimensions) {
+    public CyclicCellularAutomatonLattice(MyPoint worldDimensions) {
         this.worldDimensions = worldDimensions;
         random = new Random(new Date().getTime());
         lattice = new int[2][worldDimensions.getX()][worldDimensions.getY()];
