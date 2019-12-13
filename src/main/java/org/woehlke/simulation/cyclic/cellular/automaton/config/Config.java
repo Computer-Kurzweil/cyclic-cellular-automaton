@@ -26,7 +26,7 @@ public class Config implements ConfigProperties {
             InputStream input = new FileInputStream(appPropertiesFile)) {
             prop.load(input);
             for( Object key : prop.keySet()){
-                System.out.println(prop.get(key).toString());
+                //System.out.println(prop.get(key).toString());
             }
             title = prop.getProperty(KEY_TITLE,TITLE);
             subtitle = prop.getProperty(KEY_SUBTITLE,SUBTITLE);
