@@ -4,8 +4,6 @@ import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
 
 import java.io.Serializable;
 
-import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.THREAD_SLEEP_TIME;
-
 /**
  * Cyclic Cellular Automaton.
  *
@@ -18,6 +16,8 @@ import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.THR
  */
 public class CyclicCellularAutomatonController extends Thread
         implements Runnable, Serializable {
+
+    private static final int THREAD_SLEEP_TIME = 100;
 
     private static final long serialVersionUID = 3642865135701767557L;
 

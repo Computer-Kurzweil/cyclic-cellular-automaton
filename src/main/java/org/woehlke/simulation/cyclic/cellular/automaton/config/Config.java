@@ -6,31 +6,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import static java.io.File.*;
+public class Config implements ConfigProperties {
 
-public class Config {
+    private String title;
+    private String subtitle;
+    private int width;
+    private int height;
+    private String neighborhood;
+    private String buttonVonNeumann;
+    private String buttonMoore;
+    private String buttonWoehlke;
 
-    public final static String TITLE = "cyclic cellular automaton";
+    private static final int TITLE_HEIGHT = 30;
 
-    public final static String SUBTITLE = "cyclic cellular automaton";
-
-    private final static int TITLE_HEIGHT = 30;
-
-    private final static int WIDTH = 640;
-    private final static int HEIGHT = 468;
-
-    private final static int START_X = 100;
-    private final static int START_Y = 100;
-
-    public static final int THREAD_SLEEP_TIME = 100;
-
-    public final static int MAX_STATUS = 13;
-
-    private final ObjectRegistry ctx;
-
-    public Config(final ObjectRegistry ctx) {
-        this.ctx = ctx;
-        String appPropertiesFile = ("src" + separator +"main" + separator + "resources" + separator  + "application.properties");
+    public Config() {
+        String appPropertiesFile = (APP_PROPERTIES_FILENAME);
         Properties prop = new Properties();
         try (
             InputStream input = new FileInputStream(appPropertiesFile)) {
@@ -38,9 +28,16 @@ public class Config {
             for( Object key : prop.keySet()){
                 System.out.println(prop.get(key).toString());
             }
-            System.out.println(prop.getProperty("db.url"));
-            System.out.println(prop.getProperty("db.user"));
-            System.out.println(prop.getProperty("db.password"));
+            title = prop.getProperty(KEY_TITLE,TITLE);
+            subtitle = prop.getProperty(KEY_SUBTITLE,SUBTITLE);
+            String widthString = prop.getProperty(KEY_WIDTH,WIDTH);
+            String heightString = prop.getProperty(KEY_HEIGHT,HEIGHT);
+            width = Integer.parseInt(widthString);
+            height = Integer.parseInt(heightString);
+            neighborhood=prop.getProperty(KEY_NEIGHBORHOOD,NEIGHBORHOOD);
+            buttonVonNeumann=prop.getProperty(KEY_BUTTON_VON_NEUMANN,BUTTON_VON_NEUMANN);
+            buttonMoore=prop.getProperty(KEY_BUTTON_MOORE,BUTTON_MOORE);
+            buttonWoehlke=prop.getProperty(KEY_BUTTON_WOEHLKE,BUTTON_WOEHLKE);
         } catch (IOException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
@@ -48,8 +45,6 @@ public class Config {
 
     public Rectangle getFrameBounds(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        double height = HEIGHT;
-        double width = WIDTH;
         double startX = (screenSize.getWidth() - height) / 2d;
         double startY = (screenSize.getHeight() - width) / 2d;
         int myheight = Double.valueOf(height).intValue()+TITLE_HEIGHT;
@@ -60,15 +55,44 @@ public class Config {
     }
 
     public Rectangle getCanvasBounds(){
-        return new Rectangle(0, 0, WIDTH , HEIGHT);
+        return new Rectangle(0, 0, width , height);
     }
 
     public Point getLatticeDimensions(){
-        return new Point(WIDTH,HEIGHT);
+        return new Point(width,height);
     }
 
-    public String getSubtitle(){
-        return SUBTITLE;
+    public int getWidth() {
+        return width;
     }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public String getButtonVonNeumann() {
+        return buttonVonNeumann;
+    }
+
+    public String getButtonMoore() {
+        return buttonMoore;
+    }
+
+    public String getButtonWoehlke() {
+        return buttonWoehlke;
+    }
+
 
 }

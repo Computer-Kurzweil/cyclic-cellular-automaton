@@ -19,11 +19,11 @@ public class ObjectRegistry {
     private volatile PanelSubtitle subtitle;
 
     public ObjectRegistry() {
-        this.config = new Config(this);
+        this.config = new Config();
+        this.colorScheme = new ColorScheme();
         this.lattice = new CyclicCellularAutomatonLattice(this);
         this.canvas = new CyclicCellularAutomatonCanvas(this);
         this.controller = new CyclicCellularAutomatonController(this);
-        this.colorScheme = new ColorScheme();
         this.panelButtons = new PanelButtons(this);
         this.subtitle = new PanelSubtitle(this);
     }
@@ -60,14 +60,6 @@ public class ObjectRegistry {
         this.frame = frame;
     }
 
-    public Config getConfig() {
-        return config;
-    }
-
-    public void setConfig(Config config) {
-        this.config = config;
-    }
-
     public ColorScheme getColorScheme() {
         return colorScheme;
     }
@@ -90,5 +82,13 @@ public class ObjectRegistry {
 
     public void setSubtitle(PanelSubtitle subtitle) {
         this.subtitle = subtitle;
+    }
+
+    public Config getConfig() {
+        return config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
     }
 }

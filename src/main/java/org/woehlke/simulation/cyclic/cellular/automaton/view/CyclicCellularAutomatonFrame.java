@@ -10,9 +10,6 @@ import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
 
-import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.SUBTITLE;
-import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.TITLE;
-
 /**
  * Cyclic Cellular Automaton.
  *
@@ -30,10 +27,11 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     private static final long serialVersionUID = 4357793241219932594L;
 
-    private ObjectRegistry ctx = new ObjectRegistry();
+    private ObjectRegistry ctx;
 
-    public CyclicCellularAutomatonFrame() {
-        super(TITLE);
+    public CyclicCellularAutomatonFrame(ObjectRegistry ctx) {
+        super(ctx.getConfig().getTitle());
+        this.ctx=ctx;
         ctx.setFrame(this);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         rootPane.setLayout(layout);

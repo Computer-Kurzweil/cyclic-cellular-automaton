@@ -1,5 +1,6 @@
 package org.woehlke.simulation.cyclic.cellular.automaton;
 
+import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
 import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 
 /**
@@ -18,6 +19,7 @@ public class CyclicCellularAutomatonApplication {
      * @param args CLI Parameter
      */
     public static void main(String[] args) {
-        CyclicCellularAutomatonFrame frame = new CyclicCellularAutomatonFrame();
+        ObjectRegistry ctx = new ObjectRegistry();
+        CyclicCellularAutomatonFrame frame = new CyclicCellularAutomatonFrame(ctx);
     }
 }

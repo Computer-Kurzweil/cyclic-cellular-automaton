@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.MAX_STATUS;
 import static org.woehlke.simulation.cyclic.cellular.automaton.model.LatticeNeighbourhood.*;
 
 /**
@@ -48,7 +47,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
     private void initFillLatticeByRandom(){
         for(int y = 0; y<this.ctx.getConfig().getLatticeDimensions().getY(); y++){
             for(int x = 0; x<this.ctx.getConfig().getLatticeDimensions().getX(); x++){
-                lattice[source][x][y] = random.nextInt(MAX_STATUS);
+                lattice[source][x][y] = random.nextInt(ctx.getColorScheme().getMaxState());
             }
         }
     }
@@ -59,7 +58,7 @@ public class CyclicCellularAutomatonLattice implements Serializable {
         for(int y = 0; y < worldDimensions.getY(); y++){
             for(int x = 0; x < worldDimensions.getX(); x++){
                 lattice[target][x][y] = lattice[source][x][y];
-                int nextState = (lattice[source][x][y] + 1) % MAX_STATUS;
+                int nextState = (lattice[source][x][y] + 1) % ctx.getColorScheme().getMaxState();
                 int west = (int) ((x-1+worldDimensions.getX())%worldDimensions.getX());
                 int north = (int) ((y-1+worldDimensions.getY())%worldDimensions.getY());
                 int east = (int) ((x+1+worldDimensions.getX())%worldDimensions.getX());
