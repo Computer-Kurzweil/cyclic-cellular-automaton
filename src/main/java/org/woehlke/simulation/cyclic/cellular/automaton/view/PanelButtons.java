@@ -21,7 +21,7 @@ public class PanelButtons extends JPanel implements ActionListener {
   public PanelButtons(ObjectRegistry ctx) {
     this.ctx = ctx;
     JLabel neighborhood = new JLabel("Neighborhood");
-    this.buttonVonNeumann = new JButton("Von_Neumann");
+    this.buttonVonNeumann = new JButton("Von Neumann");
     this.buttonMoore = new JButton("Moore");
     this.buttonWoehlke = new JButton("Woehlke");
     FlowLayout layout = new FlowLayout();
