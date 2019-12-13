@@ -1,9 +1,8 @@
-package org.woehlke.simulation.cyclic.cellular.automaton.view.applets;
+package org.woehlke.simulation.cyclic.cellular.automaton.view;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.control.ControllerThread;
+import org.woehlke.simulation.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
 import org.woehlke.simulation.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
 import org.woehlke.simulation.cyclic.cellular.automaton.model.Point;
-import org.woehlke.simulation.cyclic.cellular.automaton.view.WorldCanvas;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -27,8 +26,8 @@ public class CyclicCellularAutomatonApplet extends JApplet implements
     private static final long serialVersionUID = 7493461479648193948L;
 
     private Label title = new Label("cyclic cellular automaton");
-    private ControllerThread controllerThread;
-    private WorldCanvas canvas;
+    private CyclicCellularAutomatonController cyclicCellularAutomatonController;
+    private CyclicCellularAutomatonWorldCanvas canvas;
     private CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice;
 
     public void init() {
@@ -39,10 +38,10 @@ public class CyclicCellularAutomatonApplet extends JApplet implements
         this.add(title, BorderLayout.NORTH);
         Point worldDimensions = new Point(width,height);
         cyclicCellularAutomatonLattice = new CyclicCellularAutomatonLattice(worldDimensions);
-        canvas = new WorldCanvas(worldDimensions, cyclicCellularAutomatonLattice);
+        canvas = new CyclicCellularAutomatonWorldCanvas(worldDimensions, cyclicCellularAutomatonLattice);
         this.add(canvas, BorderLayout.CENTER);
-        controllerThread = new ControllerThread(canvas, cyclicCellularAutomatonLattice);
-        controllerThread.start();
+        cyclicCellularAutomatonController = new CyclicCellularAutomatonController(canvas, cyclicCellularAutomatonLattice);
+        cyclicCellularAutomatonController.start();
     }
 
     public void destroy() {

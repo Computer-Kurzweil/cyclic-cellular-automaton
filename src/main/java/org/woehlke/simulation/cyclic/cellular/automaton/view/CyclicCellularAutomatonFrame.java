@@ -1,6 +1,6 @@
-package org.woehlke.simulation.cyclic.cellular.automaton.view.desktop;
+package org.woehlke.simulation.cyclic.cellular.automaton.view;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.view.applets.CyclicCellularAutomatonApplet;
+import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonApplet;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;

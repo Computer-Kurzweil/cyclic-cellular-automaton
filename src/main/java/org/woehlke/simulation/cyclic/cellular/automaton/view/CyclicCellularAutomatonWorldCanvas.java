@@ -18,7 +18,7 @@ import java.io.Serializable;
  * Date: 05.02.2006
  * Time: 00:51:51
  */
-public class WorldCanvas extends JComponent implements Serializable {
+public class CyclicCellularAutomatonWorldCanvas extends JComponent implements Serializable {
 
     private static final long serialVersionUID = -3057254130516052936L;
 
@@ -27,7 +27,7 @@ public class WorldCanvas extends JComponent implements Serializable {
 
     private Color[] stateColor = new Color[CyclicCellularAutomatonLattice.MAX_STATUS];
 
-    public WorldCanvas(Point worldDimensions, CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice) {
+    public CyclicCellularAutomatonWorldCanvas(Point worldDimensions, CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice) {
         this.worldDimensions = worldDimensions;
         this.setSize(this.worldDimensions.getX(), this.worldDimensions.getY());
         this.cyclicCellularAutomatonLattice=cyclicCellularAutomatonLattice;

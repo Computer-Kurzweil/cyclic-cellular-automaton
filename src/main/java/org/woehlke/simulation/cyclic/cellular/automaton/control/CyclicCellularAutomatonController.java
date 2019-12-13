@@ -1,7 +1,7 @@
 package org.woehlke.simulation.cyclic.cellular.automaton.control;
 
 import org.woehlke.simulation.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
-import org.woehlke.simulation.cyclic.cellular.automaton.view.WorldCanvas;
+import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonWorldCanvas;
 
 import java.io.Serializable;
 
@@ -15,19 +15,19 @@ import java.io.Serializable;
  * Date: 05.02.2006
  * Time: 00:36:20
  */
-public class ControllerThread extends Thread
+public class CyclicCellularAutomatonController extends Thread
         implements Runnable, Serializable {
 
     private static final long serialVersionUID = 3642865135701767557L;
 
 
     private CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice;
-    private WorldCanvas canvas;
+    private CyclicCellularAutomatonWorldCanvas canvas;
 
     private static final int THREAD_SLEEP_TIME = 100;
     private Boolean goOn;
 
-    public ControllerThread(WorldCanvas canvas, CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice) {
+    public CyclicCellularAutomatonController(CyclicCellularAutomatonWorldCanvas canvas, CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice) {
         goOn = Boolean.TRUE;
         this.canvas=canvas;
         this.cyclicCellularAutomatonLattice = cyclicCellularAutomatonLattice;
