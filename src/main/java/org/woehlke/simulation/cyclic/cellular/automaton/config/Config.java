@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import static java.io.File.*;
+
 public class Config {
 
     public final static String TITLE = "cyclic cellular automaton";
@@ -28,10 +30,14 @@ public class Config {
 
     public Config(final ObjectRegistry ctx) {
         this.ctx = ctx;
+        String appPropertiesFile = ("src" + separator +"main" + separator + "resources" + separator  + "application.properties");
+        Properties prop = new Properties();
         try (
-            InputStream input = new FileInputStream("config.properties")) {
-            Properties prop = new Properties();
+            InputStream input = new FileInputStream(appPropertiesFile)) {
             prop.load(input);
+            for( Object key : prop.keySet()){
+                System.out.println(prop.get(key).toString());
+            }
             System.out.println(prop.getProperty("db.url"));
             System.out.println(prop.getProperty("db.user"));
             System.out.println(prop.getProperty("db.password"));
