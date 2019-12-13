@@ -1,8 +1,12 @@
 package org.woehlke.simulation.cyclic.cellular.automaton.model;
 
+import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
+
+import static org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig.MAX_STATUS;
 
 /**
  * Cyclic Cellular Automaton.
@@ -15,23 +19,32 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     private static final long serialVersionUID = -594681595882016258L;
 
-    public final static int MAX_STATUS = 13;
-    private MyPoint worldDimensions;
     private Random random;
 
-    private int[][][] lattice;
+    private volatile int[][][] lattice;
     private volatile int source;
     private volatile int target;
 
+    private final ObjectRegistry ctx;
 
-    public CyclicCellularAutomatonLattice(MyPoint worldDimensions) {
-        this.worldDimensions = worldDimensions;
+    public CyclicCellularAutomatonLattice(ObjectRegistry ctx) {
+        this.ctx = ctx;
         random = new Random(new Date().getTime());
-        lattice = new int[2][worldDimensions.getX()][worldDimensions.getY()];
+        initCreateLattice();
+        initFillLatticeByRandom();
+    }
+
+    private void initCreateLattice(){
+        lattice = new int[2]
+            [this.ctx.getConfig().getWorldDimensions().getX()]
+            [this.ctx.getConfig().getWorldDimensions().getY()];
         source = 0;
         target = 1;
-        for(int y=0;y<worldDimensions.getY();y++){
-            for(int x=0;x<worldDimensions.getX();x++){
+    }
+
+    private void initFillLatticeByRandom(){
+        for(int y=0;y<this.ctx.getConfig().getWorldDimensions().getY();y++){
+            for(int x=0;x<this.ctx.getConfig().getWorldDimensions().getX();x++){
                 lattice[source][x][y] = random.nextInt(MAX_STATUS);
             }
         }
@@ -39,8 +52,9 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     public void step(){
         //System.out.print(".");
-        for(int y=0;y<worldDimensions.getY();y++){
-            for(int x=0;x<worldDimensions.getX();x++){
+        MyPoint worldDimensions = this.ctx.getConfig().getWorldDimensions();
+        for(int y = 0; y < worldDimensions.getY(); y++){
+            for(int x = 0; x < worldDimensions.getX(); x++){
                 lattice[target][x][y] = lattice[source][x][y];
                 int nextState = (lattice[source][x][y] + 1) % MAX_STATUS;
                 if(nextState == lattice[source][x][(y-1+worldDimensions.getY())%worldDimensions.getY()]){
@@ -60,11 +74,11 @@ public class CyclicCellularAutomatonLattice implements Serializable {
                 }
             }
         }
-        source = (source + 1 ) % 2;
-        target = (target + 1 ) % 2;
+        this.source = (this.source + 1 ) % 2;
+        this.target =  (this.target + 1 ) % 2;
     }
 
     public int getCellStatusFor(int x,int y){
-        return lattice[source][x][y];
+        return this.lattice[source][x][y];
     }
 }

@@ -30,5 +30,5 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = 'org.woehlke.simulation.cyclic.cellular.automaton.CyclicCellularAutomatonRunner'
+    mainClassName = 'org.woehlke.simulation.cyclic.cellular.automaton.CyclicCellularAutomatonApplication'
 }

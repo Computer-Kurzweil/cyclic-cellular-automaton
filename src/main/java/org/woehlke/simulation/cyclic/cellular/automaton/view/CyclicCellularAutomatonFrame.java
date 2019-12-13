@@ -1,8 +1,10 @@
 package org.woehlke.simulation.cyclic.cellular.automaton.view;
 
+import org.woehlke.simulation.cyclic.cellular.automaton.config.ColorScheme;
+import org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig;
+import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
 import org.woehlke.simulation.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
 import org.woehlke.simulation.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
-import org.woehlke.simulation.cyclic.cellular.automaton.model.MyPoint;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -11,6 +13,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.io.Serializable;
+
+import static org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig.TITLE;
 
 /**
  * Cyclic Cellular Automaton.
@@ -29,57 +33,39 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     private static final long serialVersionUID = 4357793241219932594L;
 
-    private final static String TITLE = "cyclic cellular automaton";
-
-    private final static int WIDTH = 640;
-    private final static int HEIGHT = 468;
-
-    private final static int START_X = 100;
-    private final static int START_Y = 100;
-
-    private CyclicCellularAutomatonController controller;
-    private CyclicCellularAutomatonWorldCanvas canvas;
-    private CyclicCellularAutomatonLattice lattice;
+    private ObjectRegistry ctx = new ObjectRegistry();
 
     public CyclicCellularAutomatonFrame() {
         super(TITLE);
+        ctx.setFrame(this);
+        CyclicCellularAutomatonConfig config = new CyclicCellularAutomatonConfig(ctx);
+        ctx.setConfig(config);
+        CyclicCellularAutomatonLattice lattice = new CyclicCellularAutomatonLattice(ctx);
+        ctx.setLattice(lattice);
+        CyclicCellularAutomatonCanvas canvas = new CyclicCellularAutomatonCanvas(ctx);
+        ctx.setCanvas(canvas);
+        CyclicCellularAutomatonController controller = new CyclicCellularAutomatonController(ctx);
+        ctx.setController(controller);
+        ColorScheme colorScheme = new ColorScheme();
+        ctx.setColorScheme(colorScheme);
+        init();
+    }
 
-        int scale = 2;
-        int width = 320 * scale;
-        int height = 234 * scale;
-        MyPoint worldDimensions = new MyPoint(width,height);
-        lattice = new CyclicCellularAutomatonLattice(worldDimensions);
-        canvas = new CyclicCellularAutomatonWorldCanvas(worldDimensions, lattice);
-        controller = new CyclicCellularAutomatonController(canvas, lattice);
-
+    public void init(){
         JLabel title = new JLabel(TITLE);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         rootPane.setLayout(layout);
         rootPane.add(title);
-        rootPane.add(canvas);
-
+        rootPane.add(ctx.getCanvas());
         addWindowListener(this);
         resetView();
-        controller.start();
+        ctx.getController().start();
     }
 
-    private Rectangle getMyBounds(){
-        int startX = START_X;
-        int startY = START_Y;
-        int width = WIDTH;
-        int height = HEIGHT + 30;
-        return new Rectangle(startX, startY, width , height);
-    }
-
-    private MyPoint getWorldDimensions(){
-        int width = WIDTH;
-        int height = HEIGHT;
-        return new MyPoint(width,height);
-    }
 
     private void resetView(){
         pack();
-        setBounds(getMyBounds());
+        setBounds(ctx.getConfig().getMyBounds());
         setVisible(true);
         toFront();
     }

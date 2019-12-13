@@ -1,9 +1,10 @@
 package org.woehlke.simulation.cyclic.cellular.automaton.control;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
-import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonWorldCanvas;
+import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
 
 import java.io.Serializable;
+
+import static org.woehlke.simulation.cyclic.cellular.automaton.config.CyclicCellularAutomatonConfig.THREAD_SLEEP_TIME;
 
 /**
  * Cyclic Cellular Automaton.
@@ -20,17 +21,13 @@ public class CyclicCellularAutomatonController extends Thread
 
     private static final long serialVersionUID = 3642865135701767557L;
 
-
-    private CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice;
-    private CyclicCellularAutomatonWorldCanvas canvas;
-
-    private static final int THREAD_SLEEP_TIME = 100;
     private Boolean goOn;
 
-    public CyclicCellularAutomatonController(CyclicCellularAutomatonWorldCanvas canvas, CyclicCellularAutomatonLattice cyclicCellularAutomatonLattice) {
+    private final ObjectRegistry ctx;
+
+    public CyclicCellularAutomatonController(ObjectRegistry ctx) {
+        this.ctx = ctx;
         goOn = Boolean.TRUE;
-        this.canvas=canvas;
-        this.cyclicCellularAutomatonLattice = cyclicCellularAutomatonLattice;
     }
 
     public void run() {
@@ -39,8 +36,8 @@ public class CyclicCellularAutomatonController extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            cyclicCellularAutomatonLattice.step();
-            canvas.repaint();
+            ctx.getLattice().step();
+            ctx.getCanvas().repaint();
             try { sleep(THREAD_SLEEP_TIME); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
