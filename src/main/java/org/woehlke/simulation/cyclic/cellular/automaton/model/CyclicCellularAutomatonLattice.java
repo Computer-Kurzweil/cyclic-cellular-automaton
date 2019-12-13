@@ -53,26 +53,61 @@ public class CyclicCellularAutomatonLattice implements Serializable {
         }
     }
 
-    public void step(){
+    public synchronized void step(){
         //System.out.print(".");
         Point worldDimensions = this.ctx.getConfig().getLatticeDimensions();
         for(int y = 0; y < worldDimensions.getY(); y++){
             for(int x = 0; x < worldDimensions.getX(); x++){
                 lattice[target][x][y] = lattice[source][x][y];
                 int nextState = (lattice[source][x][y] + 1) % MAX_STATUS;
-                if(nextState == lattice[source][x][(int) ((y-1+worldDimensions.getY())%worldDimensions.getY())]){
+                int west = (int) ((x-1+worldDimensions.getX())%worldDimensions.getX());
+                int north = (int) ((y-1+worldDimensions.getY())%worldDimensions.getY());
+                int east = (int) ((x+1+worldDimensions.getX())%worldDimensions.getX());
+                int south = (int) ((y+1+worldDimensions.getY())%worldDimensions.getY());
+                if(neighbourhood == MOORE_NEIGHBORHOOD || neighbourhood == WOEHLKE_NEIGHBORHOOD) {
+                    //North-West
+                    if (nextState == lattice[source][west][north]) {
+                        lattice[target][x][y] = nextState;
+                        continue;
+                    }
+                    //North-East
+                    if (nextState == lattice[source][east][north]) {
+                        lattice[target][x][y] = nextState;
+                        continue;
+                    }
+                    if(neighbourhood == MOORE_NEIGHBORHOOD) {
+                        //South-East
+                        if (nextState == lattice[source][east][south]) {
+                            lattice[target][x][y] = nextState;
+                            continue;
+                        }
+                    }
+                    //SouthWest
+                    if (nextState == lattice[source][west][south]) {
+                        lattice[target][x][y] = nextState;
+                        continue;
+                    }
+                }
+                //North
+                if (nextState == lattice[source][x][north]
+                ) {
                     lattice[target][x][y] = nextState;
                     continue;
                 }
-                if(nextState == lattice[source][(int) ((x+1+worldDimensions.getX())%worldDimensions.getX())][y]){
+                //East
+                if(nextState == lattice[source][east][y]){
                     lattice[target][x][y] = nextState;
                     continue;
                 }
-                if(nextState == lattice[source][x][(int) ((y+1+worldDimensions.getY())%worldDimensions.getY())]){
-                    lattice[target][x][y] = nextState;
-                    continue;
+                if(neighbourhood == MOORE_NEIGHBORHOOD || neighbourhood == VON_NEUMANN_NEIGHBORHOOD) {
+                    //South
+                    if (nextState == lattice[source][x][south]) {
+                        lattice[target][x][y] = nextState;
+                        continue;
+                    }
                 }
-                if(nextState == lattice[source][(int) ((x-1+worldDimensions.getX())%worldDimensions.getX())][y]){
+                //West
+                if(nextState == lattice[source][west][y]){
                     lattice[target][x][y] = nextState;
                 }
             }
@@ -85,24 +120,21 @@ public class CyclicCellularAutomatonLattice implements Serializable {
         return this.lattice[source][x][y];
     }
 
-    public void startVonNeumann() {
+    public synchronized void startVonNeumann() {
         initCreateLattice();
         initFillLatticeByRandom();
         this.neighbourhood=VON_NEUMANN_NEIGHBORHOOD;
-        System.out.println("VON_NEUMANN_NEIGHBORHOOD");
     }
 
-    public void startMoore() {
+    public synchronized void startMoore() {
         initCreateLattice();
         initFillLatticeByRandom();
         this.neighbourhood=MOORE_NEIGHBORHOOD;
-        System.out.println("MOORE_NEIGHBORHOOD");
     }
 
-    public void startWoehlke() {
+    public synchronized void startWoehlke() {
         initCreateLattice();
         initFillLatticeByRandom();
         this.neighbourhood=WOEHLKE_NEIGHBORHOOD;
-        System.out.println("WOEHLKE_NEIGHBORHOOD");
     }
 }
