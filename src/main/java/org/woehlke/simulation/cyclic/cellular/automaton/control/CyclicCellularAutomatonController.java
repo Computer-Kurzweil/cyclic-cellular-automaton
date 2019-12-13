@@ -51,4 +51,15 @@ public class CyclicCellularAutomatonController extends Thread
     }
 
 
+    public void pushButtonVonNeumann() {
+        ctx.getLattice().startVonNeumann();
+    }
+
+    public void pushButtonMoore() {
+        ctx.getLattice().startMoore();
+    }
+
+    public void pushButtonWoehlke() {
+        ctx.getLattice().startWoehlke();
+    }
 }

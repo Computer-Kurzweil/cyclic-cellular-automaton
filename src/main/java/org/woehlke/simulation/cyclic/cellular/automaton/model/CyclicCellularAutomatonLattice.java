@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Random;
 
 import static org.woehlke.simulation.cyclic.cellular.automaton.config.Config.MAX_STATUS;
+import static org.woehlke.simulation.cyclic.cellular.automaton.model.LatticeNeighbourhood.*;
 
 /**
  * Cyclic Cellular Automaton.
@@ -28,11 +29,12 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     private final ObjectRegistry ctx;
 
+    private volatile LatticeNeighbourhood neighbourhood;
+
     public CyclicCellularAutomatonLattice(ObjectRegistry ctx) {
         this.ctx = ctx;
         random = new Random(new Date().getTime());
-        initCreateLattice();
-        initFillLatticeByRandom();
+        startVonNeumann();
     }
 
     private void initCreateLattice(){
@@ -81,5 +83,26 @@ public class CyclicCellularAutomatonLattice implements Serializable {
 
     public int getCellStatusFor(int x,int y){
         return this.lattice[source][x][y];
+    }
+
+    public void startVonNeumann() {
+        initCreateLattice();
+        initFillLatticeByRandom();
+        this.neighbourhood=VON_NEUMANN_NEIGHBORHOOD;
+        System.out.println("VON_NEUMANN_NEIGHBORHOOD");
+    }
+
+    public void startMoore() {
+        initCreateLattice();
+        initFillLatticeByRandom();
+        this.neighbourhood=MOORE_NEIGHBORHOOD;
+        System.out.println("MOORE_NEIGHBORHOOD");
+    }
+
+    public void startWoehlke() {
+        initCreateLattice();
+        initFillLatticeByRandom();
+        this.neighbourhood=WOEHLKE_NEIGHBORHOOD;
+        System.out.println("WOEHLKE_NEIGHBORHOOD");
     }
 }

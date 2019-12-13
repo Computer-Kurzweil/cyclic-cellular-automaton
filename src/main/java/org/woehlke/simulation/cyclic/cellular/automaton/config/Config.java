@@ -61,4 +61,8 @@ public class Config {
         return new Point(WIDTH,HEIGHT);
     }
 
+    public String getSubtitle(){
+        return SUBTITLE;
+    }
+
 }

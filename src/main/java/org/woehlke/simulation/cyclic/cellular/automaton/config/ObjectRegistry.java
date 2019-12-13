@@ -4,6 +4,8 @@ import org.woehlke.simulation.cyclic.cellular.automaton.control.CyclicCellularAu
 import org.woehlke.simulation.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
 import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonCanvas;
+import org.woehlke.simulation.cyclic.cellular.automaton.view.PanelButtons;
+import org.woehlke.simulation.cyclic.cellular.automaton.view.PanelSubtitle;
 
 public class ObjectRegistry {
 
@@ -13,6 +15,8 @@ public class ObjectRegistry {
     private volatile CyclicCellularAutomatonFrame frame;
     private volatile Config config;
     private volatile ColorScheme colorScheme;
+    private volatile PanelButtons panelButtons;
+    private volatile PanelSubtitle subtitle;
 
     public ObjectRegistry() {
         this.config = new Config(this);
@@ -20,6 +24,8 @@ public class ObjectRegistry {
         this.canvas = new CyclicCellularAutomatonCanvas(this);
         this.controller = new CyclicCellularAutomatonController(this);
         this.colorScheme = new ColorScheme();
+        this.panelButtons = new PanelButtons(this);
+        this.subtitle = new PanelSubtitle(this);
     }
 
     public CyclicCellularAutomatonController getController() {
@@ -68,5 +74,21 @@ public class ObjectRegistry {
 
     public void setColorScheme(ColorScheme colorScheme) {
         this.colorScheme = colorScheme;
+    }
+
+    public PanelButtons getPanelButtons() {
+        return panelButtons;
+    }
+
+    public void setPanelButtons(PanelButtons panelButtons) {
+        this.panelButtons = panelButtons;
+    }
+
+    public PanelSubtitle getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(PanelSubtitle subtitle) {
+        this.subtitle = subtitle;
     }
 }

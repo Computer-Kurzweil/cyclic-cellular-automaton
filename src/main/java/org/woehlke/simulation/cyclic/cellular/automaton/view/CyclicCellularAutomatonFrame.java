@@ -35,11 +35,11 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
     public CyclicCellularAutomatonFrame() {
         super(TITLE);
         ctx.setFrame(this);
-        PanelSubtitle subtitle = new PanelSubtitle(SUBTITLE);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         rootPane.setLayout(layout);
-        rootPane.add(subtitle);
+        rootPane.add(ctx.getSubtitle());
         rootPane.add(ctx.getCanvas());
+        rootPane.add(ctx.getPanelButtons());
         addWindowListener(this);
         ctx.getController().start();
         showMe();
