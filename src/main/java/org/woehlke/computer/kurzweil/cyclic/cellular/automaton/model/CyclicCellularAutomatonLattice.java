@@ -1,13 +1,13 @@
-package org.woehlke.simulation.cyclic.cellular.automaton.model;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
 
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-import static org.woehlke.simulation.cyclic.cellular.automaton.model.LatticeNeighbourhood.*;
+import static org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.LatticeNeighbourhood.*;
 
 /**
  * Cyclic Cellular Automaton.

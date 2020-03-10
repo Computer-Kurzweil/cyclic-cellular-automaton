@@ -1,6 +1,6 @@
-package org.woehlke.simulation.cyclic.cellular.automaton.control;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package org.woehlke.simulation.cyclic.cellular.automaton.model;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model;
 
 public enum LatticeNeighbourhood {
 

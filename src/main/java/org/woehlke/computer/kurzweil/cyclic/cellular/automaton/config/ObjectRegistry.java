@@ -1,11 +1,11 @@
-package org.woehlke.simulation.cyclic.cellular.automaton.config;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
-import org.woehlke.simulation.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
-import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
-import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonCanvas;
-import org.woehlke.simulation.cyclic.cellular.automaton.view.PanelButtons;
-import org.woehlke.simulation.cyclic.cellular.automaton.view.PanelSubtitle;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.PanelButtons;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.PanelSubtitle;
 
 public class ObjectRegistry {
 

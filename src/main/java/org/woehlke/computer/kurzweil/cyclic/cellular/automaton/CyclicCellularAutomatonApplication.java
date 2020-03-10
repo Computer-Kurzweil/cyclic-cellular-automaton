@@ -1,7 +1,7 @@
-package org.woehlke.simulation.cyclic.cellular.automaton;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
-import org.woehlke.simulation.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 
 /**
  * Cyclic Cellular Automaton.

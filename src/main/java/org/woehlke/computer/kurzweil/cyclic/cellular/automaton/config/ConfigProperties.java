@@ -1,4 +1,4 @@
-package org.woehlke.simulation.cyclic.cellular.automaton.config;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config;
 
 import static java.io.File.separator;
 
@@ -13,7 +13,7 @@ public interface ConfigProperties {
     String BUTTON_MOORE="Moore";
     String BUTTON_WOEHLKE="Woehlke";
 
-    String KEY = "org.woehlke.simulation.cyclic.cellular.automaton.config.";
+    String KEY = "org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.";
 
     String KEY_TITLE = KEY + "title";
     String KEY_SUBTITLE = KEY + "subtitle";

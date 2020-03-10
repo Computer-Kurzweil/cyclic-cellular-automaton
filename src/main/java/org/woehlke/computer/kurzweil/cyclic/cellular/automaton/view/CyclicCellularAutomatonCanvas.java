@@ -1,6 +1,6 @@
-package org.woehlke.simulation.cyclic.cellular.automaton.view;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view;
 
-import org.woehlke.simulation.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
 
 import javax.swing.*;
 import java.awt.*;
