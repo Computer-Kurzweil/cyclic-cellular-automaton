@@ -28,7 +28,7 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 ```
 git clone https://github.com/thomaswoehlke/cyclic-cellular-automaton.git
 cd cyclic-cellular-automaton
-./gradlew run
+./gradlew clean shadowJar runShadow
 ```
 
 ## Run the Applet Test
