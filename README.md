@@ -1,4 +1,7 @@
 # cyclic-cellular-automaton
+
+![Java CI with Maven](https://github.com/Computer-Kurzweil/cyclic-cellular-automaton/workflows/Java%20CI%20with%20Maven/badge.svg)
+
 **Cyclic cellular automaton**
 
 ## Abstract
