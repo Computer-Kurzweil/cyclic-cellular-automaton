@@ -14,7 +14,7 @@ import java.io.Serializable;
  * Cyclic Cellular Automaton.
  *
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/cyclic-cellular-automaton/
+ * https://woehlke.org/p/cyclic-cellular-automaton/
  * @author Thomas Woehlke
  * Date: 04.02.2006
  * Time: 18:47:46

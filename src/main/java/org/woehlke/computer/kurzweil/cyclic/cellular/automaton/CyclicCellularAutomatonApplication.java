@@ -7,7 +7,7 @@ import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellul
  * Cyclic Cellular Automaton.
  *
  * (C) 2006 - 2013 Thomas Woehlke.
- * http://thomas-woehlke.de/p/cyclic-cellular-automaton/
+ * https://woehlke.org/p/cyclic-cellular-automaton/
  * @author Thomas Woehlke
  */
 public class CyclicCellularAutomatonApplication {
