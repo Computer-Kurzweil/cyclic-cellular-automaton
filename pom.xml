@@ -1136,7 +1136,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>org.woehlke.simulation.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</mainClass>
+                    <mainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -1146,7 +1146,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.woehlke.simulation.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</mainClass>
+                            <mainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
