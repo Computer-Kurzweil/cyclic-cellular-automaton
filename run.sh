@@ -25,10 +25,10 @@ function run() {
 }
 
 function main() {
-    #site
+    site
     #run
-    runGithubCi
-    makeRelease
+    #runGithubCi
+    #makeRelease
 }
 
 main

@@ -19,7 +19,7 @@
 
     <scm>
         <url>https://github.com/Computer-Kurzweil/cyclic-cellular-automaton.git</url>
-        <connection>sgit@github.com:Computer-Kurzweil/cyclic-cellular-automaton.git</connection>
+        <connection>scm:git@github.com:Computer-Kurzweil/cyclic-cellular-automaton.git</connection>
         <developerConnection>git@github.com:Computer-Kurzweil/cyclic-cellular-automaton.git</developerConnection>
     </scm>
 
