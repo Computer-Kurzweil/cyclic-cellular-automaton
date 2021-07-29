@@ -28,7 +28,7 @@ public class ColorScheme {
         stateColorList.add(new Color(234,123,254));
         stateColor = new Color[stateColorList.toArray().length];
         for(int i=0; i < stateColorList.toArray().length; i++){
-            stateColor[i] = (Color) stateColorList.get(i);
+            stateColor[i] = stateColorList.get(i);
         }
     }
 
