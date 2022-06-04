@@ -12,6 +12,10 @@ import static org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.Latt
 /**
  * Cyclic Cellular Automaton.
  *
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * https://woehlke.org/p/cyclic-cellular-automaton/
+ * @author Thomas Woehlke
+ *
  * Created with IntelliJ IDEA.
  * Date: 28.08.13
  * Time: 12:39

@@ -4,6 +4,13 @@ import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control.CyclicCel
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.*;
 
+/**
+ * Cyclic Cellular Automaton.
+ *
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * https://woehlke.org/p/cyclic-cellular-automaton/
+ * @author Thomas Woehlke
+ */
 public class ObjectRegistry {
 
     private volatile CyclicCellularAutomatonController controller;

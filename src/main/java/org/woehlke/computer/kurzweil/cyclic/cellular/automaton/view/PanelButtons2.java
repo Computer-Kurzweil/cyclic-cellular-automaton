@@ -9,7 +9,11 @@ import java.awt.event.ActionListener;
 
 
 /**
- * TODO write doc.
+ * Cyclic Cellular Automaton.
+ *
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * https://woehlke.org/p/cyclic-cellular-automaton/
+ * @author Thomas Woehlke
  */
 public class PanelButtons2 extends JPanel implements ActionListener {
 

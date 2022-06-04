@@ -6,6 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+
+/**
+ * Cyclic Cellular Automaton.
+ *
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * https://woehlke.org/p/cyclic-cellular-automaton/
+ * @author Thomas Woehlke
+ */
 public class Config implements ConfigProperties {
 
     private String title;

@@ -1,5 +1,12 @@
 package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model;
 
+/**
+ * Cyclic Cellular Automaton.
+ *
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * https://woehlke.org/p/cyclic-cellular-automaton/
+ * @author Thomas Woehlke
+ */
 public enum LatticeNeighbourhood {
 
     /**

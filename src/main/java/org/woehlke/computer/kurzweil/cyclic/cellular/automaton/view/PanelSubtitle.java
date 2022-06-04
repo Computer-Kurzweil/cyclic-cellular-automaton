@@ -6,7 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * TODO write doc.
+ * Cyclic Cellular Automaton.
+ *
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * https://woehlke.org/p/cyclic-cellular-automaton/
+ * @author Thomas Woehlke
  */
 public class PanelSubtitle extends JPanel {
 

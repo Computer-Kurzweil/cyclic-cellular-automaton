@@ -2,6 +2,14 @@ package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config;
 
 import static java.io.File.separator;
 
+
+/**
+ * Cyclic Cellular Automaton.
+ *
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * https://woehlke.org/p/cyclic-cellular-automaton/
+ * @author Thomas Woehlke
+ */
 public interface ConfigProperties {
 
     String TITLE = "cyclic cellular automaton";

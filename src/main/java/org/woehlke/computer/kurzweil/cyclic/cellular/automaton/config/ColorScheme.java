@@ -4,6 +4,14 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Cyclic Cellular Automaton.
+ *
+ * (C) 2006 - 2022 Thomas Woehlke.
+ * https://woehlke.org/p/cyclic-cellular-automaton/
+ * @author Thomas Woehlke
+ */
 public class ColorScheme {
 
     private Color[] stateColor;
