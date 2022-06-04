@@ -19,7 +19,7 @@ public class ObjectRegistry {
     private volatile CyclicCellularAutomatonFrame frame;
     private volatile Config config;
     private volatile ColorScheme colorScheme;
-    private volatile PanelButtons2 panelButtons;
+    private volatile PanelButtons panelButtons;
     private volatile PanelSubtitle subtitle;
 
     public ObjectRegistry() {
@@ -28,7 +28,7 @@ public class ObjectRegistry {
         this.lattice = new CyclicCellularAutomatonLattice(this);
         this.canvas = new CyclicCellularAutomatonCanvas(this);
         this.controller = new CyclicCellularAutomatonController(this);
-        this.panelButtons = new PanelButtons2(this);
+        this.panelButtons = new PanelButtons(this);
         this.subtitle = new PanelSubtitle(this);
     }
 
@@ -72,11 +72,11 @@ public class ObjectRegistry {
         this.colorScheme = colorScheme;
     }
 
-    public PanelButtons2 getPanelButtons() {
+    public PanelButtons getPanelButtons() {
         return panelButtons;
     }
 
-    public void setPanelButtons(PanelButtons2 panelButtons) {
+    public void setPanelButtons(PanelButtons panelButtons) {
         this.panelButtons = panelButtons;
     }
 
