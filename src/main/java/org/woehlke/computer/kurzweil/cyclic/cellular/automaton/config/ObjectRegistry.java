@@ -2,10 +2,7 @@ package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config;
 
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonCanvas;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.PanelButtons;
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.PanelSubtitle;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.*;
 
 public class ObjectRegistry {
 
@@ -15,7 +12,7 @@ public class ObjectRegistry {
     private volatile CyclicCellularAutomatonFrame frame;
     private volatile Config config;
     private volatile ColorScheme colorScheme;
-    private volatile PanelButtons panelButtons;
+    private volatile PanelButtons2 panelButtons;
     private volatile PanelSubtitle subtitle;
 
     public ObjectRegistry() {
@@ -24,7 +21,7 @@ public class ObjectRegistry {
         this.lattice = new CyclicCellularAutomatonLattice(this);
         this.canvas = new CyclicCellularAutomatonCanvas(this);
         this.controller = new CyclicCellularAutomatonController(this);
-        this.panelButtons = new PanelButtons(this);
+        this.panelButtons = new PanelButtons2(this);
         this.subtitle = new PanelSubtitle(this);
     }
 
@@ -68,11 +65,11 @@ public class ObjectRegistry {
         this.colorScheme = colorScheme;
     }
 
-    public PanelButtons getPanelButtons() {
+    public PanelButtons2 getPanelButtons() {
         return panelButtons;
     }
 
-    public void setPanelButtons(PanelButtons panelButtons) {
+    public void setPanelButtons(PanelButtons2 panelButtons) {
         this.panelButtons = panelButtons;
     }
 
