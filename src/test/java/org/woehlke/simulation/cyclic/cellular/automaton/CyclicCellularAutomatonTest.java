@@ -7,11 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Cyclic Cellular Automaton.
- *
+ * <p>
  * (C) 2006 - 2022 Thomas Woehlke.
  * https://woehlke.org/p/cyclic-cellular-automaton/
- * @author Thomas Woehlke
  *
+ * @author Thomas Woehlke
+ * <p>
  * Unit test for simple CyclicCellularAutomatonRunner.
  */
 public class CyclicCellularAutomatonTest {

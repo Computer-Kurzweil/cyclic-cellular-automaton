@@ -12,19 +12,20 @@ import java.io.Serializable;
 
 /**
  * Cyclic Cellular Automaton.
- *
+ * <p>
  * (C) 2006 - 2022 Thomas Woehlke.
  * https://woehlke.org/p/cyclic-cellular-automaton/
- * @author Thomas Woehlke
  *
+ * @author Thomas Woehlke
+ * <p>
  * Date: 04.02.2006
  * Time: 18:47:46
  */
 public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserver,
-        MenuContainer,
-        Serializable,
-        Accessible,
-        WindowListener {
+    MenuContainer,
+    Serializable,
+    Accessible,
+    WindowListener {
 
     private static final long serialVersionUID = 4357793241219932594L;
 
@@ -32,7 +33,7 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     public CyclicCellularAutomatonFrame(ObjectRegistry ctx) {
         super(ctx.getConfig().getTitle());
-        this.ctx=ctx;
+        this.ctx = ctx;
         ctx.setFrame(this);
         BoxLayout layout = new BoxLayout(rootPane, BoxLayout.PAGE_AXIS);
         rootPane.setLayout(layout);
@@ -63,7 +64,8 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
         System.exit(0);
     }
 
-    public void windowIconified(WindowEvent e) { }
+    public void windowIconified(WindowEvent e) {
+    }
 
     public void windowDeiconified(WindowEvent e) {
         showMe();

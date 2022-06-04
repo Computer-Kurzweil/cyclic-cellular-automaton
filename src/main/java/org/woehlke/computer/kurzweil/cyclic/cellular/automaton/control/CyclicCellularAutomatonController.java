@@ -6,16 +6,17 @@ import java.io.Serializable;
 
 /**
  * Cyclic Cellular Automaton.
- *
+ * <p>
  * (C) 2006 - 2022 Thomas Woehlke.
  * https://woehlke.org/p/cyclic-cellular-automaton/
- * @author Thomas Woehlke
  *
+ * @author Thomas Woehlke
+ * <p>
  * Date: 05.02.2006
  * Time: 00:36:20
  */
 public class CyclicCellularAutomatonController extends Thread
-        implements Runnable, Serializable {
+    implements Runnable, Serializable {
 
     private static final int THREAD_SLEEP_TIME = 100;
 
@@ -38,8 +39,11 @@ public class CyclicCellularAutomatonController extends Thread
             }
             ctx.getLattice().step();
             ctx.getCanvas().repaint();
-            try { sleep(THREAD_SLEEP_TIME); }
-            catch (InterruptedException e) { e.printStackTrace(); }
+            try {
+                sleep(THREAD_SLEEP_TIME);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         while (doIt);
     }
