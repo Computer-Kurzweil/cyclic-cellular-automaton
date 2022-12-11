@@ -18,9 +18,9 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 ## Screenshots
 
 ### Early Screen
-![Early Screen](../resources/img/screen1.png)
+![Early Screen](img/screen1.png)
 ### Later Screen
-![Later Screen](../resources/img/screen2.png)
+![Later Screen](img/screen2.png)
 
 ## Git Repository
 * [https://github.com/thomaswoehlke/cyclic-cellular-automaton](https://github.com/thomaswoehlke/cyclic-cellular-automaton)
