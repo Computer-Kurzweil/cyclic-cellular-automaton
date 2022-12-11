@@ -23,7 +23,7 @@
             <item name="GitHub project" href="https://github.com/Computer-Kurzweil/cyclic-cellular-automaton/" />
         </links>
         <breadcrumbs>
-            <item name="Cyclic Cellular Automaton (Demon)" href="/" />
+            <item name="Cyclic Cellular Automaton (Demon)" href="/readme2.html" />
         </breadcrumbs>
         <menu name="Main" inherit="top">
             <item name="Home" href="readme2.html" />
