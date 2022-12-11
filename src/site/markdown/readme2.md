@@ -28,7 +28,7 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 ## Run the Desktop Application
 
 ```
-git clone https://github.com/thomaswoehlke/cyclic-cellular-automaton.git
+git clone https://github.com/Computer-Kurzweil/cyclic-cellular-automaton.git
 cd cyclic-cellular-automaton
 ./mvnw
 ```
