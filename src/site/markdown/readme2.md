@@ -24,8 +24,6 @@ One-dimensional cyclic cellular automata can be interpreted as systems of intera
 
 ## Git Repository
 * [https://github.com/thomaswoehlke/cyclic-cellular-automaton](https://github.com/thomaswoehlke/cyclic-cellular-automaton)
-## Gradle Wrapper
-* [https://docs.gradle.org/current/userguide/gradle_wrapper.html](https://docs.gradle.org/current/userguide/gradle_wrapper.html)
 
 ## Run the Desktop Application
 
