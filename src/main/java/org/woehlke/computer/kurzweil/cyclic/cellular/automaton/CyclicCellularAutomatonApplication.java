@@ -14,6 +14,8 @@ import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellul
 public class CyclicCellularAutomatonApplication {
 
     private CyclicCellularAutomatonApplication() {
+        ObjectRegistry ctx = new ObjectRegistry();
+        CyclicCellularAutomatonFrame frame = new CyclicCellularAutomatonFrame(ctx);
     }
 
     /**
@@ -22,7 +24,6 @@ public class CyclicCellularAutomatonApplication {
      * @param args CLI Parameter
      */
     public static void main(String[] args) {
-        ObjectRegistry ctx = new ObjectRegistry();
-        CyclicCellularAutomatonFrame frame = new CyclicCellularAutomatonFrame(ctx);
+        CyclicCellularAutomatonApplication application = new CyclicCellularAutomatonApplication();
     }
 }
