@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.canvas;
 
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
 

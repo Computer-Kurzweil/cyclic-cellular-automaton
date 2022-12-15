@@ -3,6 +3,9 @@ package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.CyclicCellularAutomatonLattice;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.*;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.canvas.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.panels.PanelButtons;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.panels.PanelSubtitle;
 
 /**
  * Cyclic Cellular Automaton.
