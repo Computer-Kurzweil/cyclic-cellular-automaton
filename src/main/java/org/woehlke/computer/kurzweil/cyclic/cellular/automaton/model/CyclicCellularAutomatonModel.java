@@ -1,6 +1,9 @@
 package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import lombok.Getter;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.canvas.ColorScheme;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -20,7 +23,7 @@ import static org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.Latt
  * Date: 28.08.13
  * Time: 12:39
  */
-public class CyclicCellularAutomatonLattice implements Serializable {
+public class CyclicCellularAutomatonModel implements Serializable {
 
     private static final long serialVersionUID = -594681595882016258L;
 
@@ -30,39 +33,53 @@ public class CyclicCellularAutomatonLattice implements Serializable {
     private volatile int source;
     private volatile int target;
 
-    private final ObjectRegistry ctx;
+    @Getter
+    private final ComputerKurzweilProperties config;
 
+    @Getter
+    private final Point worldDimensions;
+
+    @Getter
+    private volatile ColorScheme colorScheme;
+
+    @Getter
     private volatile LatticeNeighbourhood neighbourhood;
 
-    public CyclicCellularAutomatonLattice(ObjectRegistry ctx) {
-        this.ctx = ctx;
-        random = new Random(new Date().getTime());
-        startVonNeumann();
+    public CyclicCellularAutomatonModel(CyclicCellularAutomatonFrame tab) {
+        this.config = tab.getConfig();
+        this.colorScheme = new ColorScheme();
+        this.random = new Random(new Date().getTime());
+        int scale =  config.getCca().getView().getScale();
+        int x = scale * config.getCca().getView().getWidth();
+        int y = scale * config.getCca().getView().getHeight();
+        this.worldDimensions = new Point(x,y);
+        this.startVonNeumann();
     }
 
     private void initCreateLattice() {
-        lattice = new int[2]
-            [(int) this.ctx.getConfig().getLatticeDimensions().getX()]
-            [(int) this.ctx.getConfig().getLatticeDimensions().getY()];
+        int x = (int) this.worldDimensions.getX();
+        int y = (int) this.worldDimensions.getY();
+        lattice = new int[2][x][y];
         source = 0;
         target = 1;
     }
 
     private void initFillLatticeByRandom() {
-        for (int y = 0; y < this.ctx.getConfig().getLatticeDimensions().getY(); y++) {
-            for (int x = 0; x < this.ctx.getConfig().getLatticeDimensions().getX(); x++) {
-                lattice[source][x][y] = random.nextInt(ctx.getColorScheme().getMaxState());
+        int xx = (int) this.worldDimensions.getX();
+        int yy = (int) this.worldDimensions.getY();
+        for (int y = 0; y < yy; y++) {
+            for (int x = 0; x < xx; x++) {
+                lattice[source][x][y] = random.nextInt(this.colorScheme.getMaxState());
             }
         }
     }
 
     public synchronized void step() {
         //System.out.print(".");
-        Point worldDimensions = this.ctx.getConfig().getLatticeDimensions();
-        for (int y = 0; y < worldDimensions.getY(); y++) {
+        for (int y = 0; y < config.getCca().getView().getHeight(); y++) {
             for (int x = 0; x < worldDimensions.getX(); x++) {
                 lattice[target][x][y] = lattice[source][x][y];
-                int nextState = (lattice[source][x][y] + 1) % ctx.getColorScheme().getMaxState();
+                int nextState = (lattice[source][x][y] + 1) % this.colorScheme.getMaxState();
                 int west = (int) ((x - 1 + worldDimensions.getX()) % worldDimensions.getX());
                 int north = (int) ((y - 1 + worldDimensions.getY()) % worldDimensions.getY());
                 int east = (int) ((x + 1 + worldDimensions.getX()) % worldDimensions.getX());

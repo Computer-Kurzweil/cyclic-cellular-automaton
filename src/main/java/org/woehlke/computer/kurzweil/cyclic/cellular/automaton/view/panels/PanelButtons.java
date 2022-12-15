@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.panels;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +19,7 @@ public class PanelButtons extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 242L;
 
-    private ObjectRegistry ctx;
+    private CyclicCellularAutomatonFrame tab;
     private final JLabel neighborhoodLabel = new JLabel("Neighbourhood:");
     private final JRadioButton buttonVonNeumann = new JRadioButton("Von Neumann", true);
     private final JRadioButton buttonMoore = new JRadioButton("Moore");
@@ -27,8 +27,8 @@ public class PanelButtons extends JPanel implements ActionListener {
     private final JButton buttonRestart = new JButton("Restart");
     private final ButtonGroup bgroup = new ButtonGroup();
 
-    public PanelButtons(ObjectRegistry ctx) {
-        this.ctx = ctx;
+    public PanelButtons(CyclicCellularAutomatonFrame tab) {
+        this.tab = tab;
 
         bgroup.add(buttonVonNeumann);
         bgroup.add(buttonMoore);
@@ -50,13 +50,13 @@ public class PanelButtons extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == this.buttonRestart) {
             if (buttonVonNeumann.isSelected()) {
-                this.ctx.getController().pushButtonVonNeumann();
+                this.tab.getController().pushButtonVonNeumann();
             }
             if (buttonMoore.isSelected()) {
-                this.ctx.getController().pushButtonMoore();
+                this.tab.getController().pushButtonMoore();
             }
             if (buttonWoehlke.isSelected()) {
-                this.ctx.getController().pushButtonWoehlke();
+                this.tab.getController().pushButtonWoehlke();
             }
         }
     }

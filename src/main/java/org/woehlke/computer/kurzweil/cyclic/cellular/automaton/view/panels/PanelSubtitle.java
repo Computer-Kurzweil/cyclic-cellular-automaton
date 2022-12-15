@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.panels;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +19,8 @@ public class PanelSubtitle extends JPanel {
 
     private final JLabel subtitleLabel;
 
-    public PanelSubtitle(ObjectRegistry ctx) {
-        this.subtitleLabel = new JLabel(ctx.getConfig().getSubtitle());
+    public PanelSubtitle(CyclicCellularAutomatonFrame tab) {
+        this.subtitleLabel = new JLabel(tab.getConfig().getCca().getView().getSubtitle());
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         this.add(subtitleLabel);

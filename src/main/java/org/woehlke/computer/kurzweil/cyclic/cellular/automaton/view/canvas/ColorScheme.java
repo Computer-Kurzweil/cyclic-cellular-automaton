@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.canvas;
 
 import java.awt.Color;
 import java.util.ArrayList;

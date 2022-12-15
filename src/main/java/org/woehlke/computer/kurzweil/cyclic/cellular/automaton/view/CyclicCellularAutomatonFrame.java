@@ -1,6 +1,13 @@
 package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import lombok.Getter;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.canvas.ColorScheme;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control.CyclicCellularAutomatonController;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.CyclicCellularAutomatonModel;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.canvas.CyclicCellularAutomatonCanvas;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.panels.PanelButtons;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.panels.PanelSubtitle;
 
 import javax.accessibility.Accessible;
 import javax.swing.*;
@@ -21,6 +28,7 @@ import java.io.Serializable;
  * Date: 04.02.2006
  * Time: 18:47:46
  */
+@Getter
 public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserver,
     MenuContainer,
     Serializable,
@@ -29,24 +37,42 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     private static final long serialVersionUID = 4357793241219932594L;
 
-    private ObjectRegistry ctx;
+    private final ComputerKurzweilProperties config;
 
-    public CyclicCellularAutomatonFrame(ObjectRegistry ctx) {
-        super(ctx.getConfig().getTitle());
-        this.ctx = ctx;
-        ctx.setFrame(this);
+    private volatile CyclicCellularAutomatonController controller;
+    private volatile CyclicCellularAutomatonCanvas canvas;
+    private volatile CyclicCellularAutomatonModel model;
+
+    private volatile ColorScheme colorScheme;
+    private volatile PanelButtons panelButtons;
+    private volatile PanelSubtitle subtitle;
+
+    public CyclicCellularAutomatonFrame(ComputerKurzweilProperties config) {
+        super(config.getCca().getView().getTitle());
+        this.config = config;
+
+        this.model = new CyclicCellularAutomatonModel(this);
+        this.canvas = new CyclicCellularAutomatonCanvas(this);
+        this.controller = new CyclicCellularAutomatonController(this);
+        this.panelButtons = new PanelButtons(this);
+        this.subtitle = new PanelSubtitle(this);
+        this.colorScheme = new ColorScheme();
+
         Container pane = this.getContentPane();
-        pane.add(ctx.getSubtitle(), BorderLayout.PAGE_START);
-        pane.add(ctx.getCanvas(), BorderLayout.CENTER);
-        pane.add(ctx.getPanelButtons(), BorderLayout.PAGE_END);
+        pane.add(this.subtitle, BorderLayout.PAGE_START);
+        pane.add(this.canvas, BorderLayout.CENTER);
+        pane.add(this.panelButtons, BorderLayout.PAGE_END);
         addWindowListener(this);
-        ctx.getController().start();
         showMe();
+    }
+
+    public void start(){
+        this.controller.start();
     }
 
     public void showMe() {
         pack();
-        this.setBounds(ctx.getConfig().getFrameBounds());
+        this.setBounds(this.getFrameBounds());
         setVisible(true);
         toFront();
     }
@@ -76,4 +102,19 @@ public class CyclicCellularAutomatonFrame extends JFrame implements ImageObserve
 
     public void windowDeactivated(WindowEvent e) {
     }
+
+    public Rectangle getFrameBounds() {
+        int height =(int) this.model.getWorldDimensions().getY();
+        int width = (int) this.model.getWorldDimensions().getX();
+        int TITLE_HEIGHT = 20;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double startX = (screenSize.getWidth() - height) / 2d;
+        double startY = (screenSize.getHeight() - width) / 2d;
+        int myheight = Double.valueOf(height).intValue() + TITLE_HEIGHT;
+        int mywidth = Double.valueOf(width).intValue();
+        int mystartX = Double.valueOf(startX).intValue();
+        int mystartY = Double.valueOf(startY).intValue();
+        return new Rectangle(mystartX, mystartY, mywidth, myheight);
+    }
+
 }

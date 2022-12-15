@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.canvas;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,25 +19,27 @@ import java.io.Serializable;
  */
 public class CyclicCellularAutomatonCanvas extends JComponent implements Serializable {
 
-    private static final long serialVersionUID = -3057254130516052936L;
+    static final long serialVersionUID = -3057254130516052936L;
 
-    private ObjectRegistry ctx;
+    private CyclicCellularAutomatonFrame tab;
 
-    public CyclicCellularAutomatonCanvas(ObjectRegistry ctx) {
-        this.ctx = ctx;
+    public CyclicCellularAutomatonCanvas(CyclicCellularAutomatonFrame tab) {
+        this.tab = tab;
         Dimension preferredSize = new Dimension(
-            (int) ctx.getConfig().getLatticeDimensions().getX(),
-            (int) ctx.getConfig().getLatticeDimensions().getY()
+            (int) this.tab.getModel().getWorldDimensions().getX(),
+            (int) this.tab.getModel().getWorldDimensions().getY()
         );
         this.setPreferredSize(preferredSize);
     }
 
     public void paint(Graphics g) {
         super.paintComponent(g);
-        for (int y = 0; y < ctx.getConfig().getLatticeDimensions().getY(); y++) {
-            for (int x = 0; x < ctx.getConfig().getLatticeDimensions().getX(); x++) {
-                int state = this.ctx.getLattice().getCellStatusFor(x, y);
-                Color stateColor = this.ctx.getColorScheme().getColorForState(state);
+        int xx = (int) this.tab.getModel().getWorldDimensions().getX();
+        int yy = (int) this.tab.getModel().getWorldDimensions().getY();
+        for (int y = 0; y < yy; y++) {
+            for (int x = 0; x < xx; x++) {
+                int state = this.tab.getModel().getCellStatusFor(x, y);
+                Color stateColor = this.tab.getModel().getColorScheme().getColorForState(state);
                 g.setColor(stateColor);
                 g.drawLine(x, y, x, y);
             }

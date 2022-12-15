@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.cyclic.cellular.automaton;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ComputerKurzweilProperties;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 
 /**
@@ -13,10 +13,19 @@ import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellul
  */
 public class CyclicCellularAutomatonApplication {
 
+    private final CyclicCellularAutomatonFrame frame;
+
     private CyclicCellularAutomatonApplication() {
-        ObjectRegistry ctx = new ObjectRegistry();
-        CyclicCellularAutomatonFrame frame = new CyclicCellularAutomatonFrame(ctx);
+        String conf = "application.yml";
+        String jarPath = "target/cyclic-cellular-automaton.jar";
+        ComputerKurzweilProperties config = ComputerKurzweilProperties.propertiesFactory(conf, jarPath);
+        this.frame = new CyclicCellularAutomatonFrame(config);
     }
+
+    public void start(){
+        this.frame.start();
+    }
+
 
     /**
      * Starting the App.
@@ -25,5 +34,6 @@ public class CyclicCellularAutomatonApplication {
      */
     public static void main(String[] args) {
         CyclicCellularAutomatonApplication application = new CyclicCellularAutomatonApplication();
+        application.start();
     }
 }

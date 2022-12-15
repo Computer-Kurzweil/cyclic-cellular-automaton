@@ -1,6 +1,6 @@
 package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.control;
 
-import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ObjectRegistry;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 
 import java.io.Serializable;
 
@@ -24,10 +24,10 @@ public class CyclicCellularAutomatonController extends Thread
 
     private Boolean goOn;
 
-    private final ObjectRegistry ctx;
+    private final CyclicCellularAutomatonFrame tab;
 
-    public CyclicCellularAutomatonController(ObjectRegistry ctx) {
-        this.ctx = ctx;
+    public CyclicCellularAutomatonController(CyclicCellularAutomatonFrame tab) {
+        this.tab = tab;
         goOn = Boolean.TRUE;
     }
 
@@ -37,8 +37,9 @@ public class CyclicCellularAutomatonController extends Thread
             synchronized (goOn) {
                 doIt = goOn.booleanValue();
             }
-            ctx.getLattice().step();
-            ctx.getCanvas().repaint();
+            tab.getModel().step();
+            tab.getCanvas().repaint();
+            tab.repaint();
             try {
                 sleep(THREAD_SLEEP_TIME);
             } catch (InterruptedException e) {
@@ -54,16 +55,13 @@ public class CyclicCellularAutomatonController extends Thread
         }
     }
 
-
     public void pushButtonVonNeumann() {
-        ctx.getLattice().startVonNeumann();
+        tab.getModel().startVonNeumann();
     }
 
     public void pushButtonMoore() {
-        ctx.getLattice().startMoore();
+        tab.getModel().startMoore();
     }
 
-    public void pushButtonWoehlke() {
-        ctx.getLattice().startWoehlke();
-    }
+    public void pushButtonWoehlke(){ tab.getModel().startWoehlke();}
 }
