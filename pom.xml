@@ -4,7 +4,7 @@
 
     <groupId>org.woehlke.computer.kurzweil</groupId>
     <artifactId>cyclic-cellular-automaton</artifactId>
-    <version>3.0.1</version>
+    <version>3.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Cyclic Cellular Automaton (Demon)</name>
@@ -23,7 +23,7 @@
         <connection>scm:git:git@github.com:Computer-Kurzweil/cyclic-cellular-automaton.git</connection>
         <developerConnection>scm:git:git@github.com:Computer-Kurzweil/cyclic-cellular-automaton.git
         </developerConnection>
-        <tag>cyclic-cellular-automaton-3.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
