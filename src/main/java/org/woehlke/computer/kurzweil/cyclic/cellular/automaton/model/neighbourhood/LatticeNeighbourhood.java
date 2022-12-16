@@ -1,4 +1,4 @@
-package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model;
+package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.neighbourhood;
 
 /**
  * Cyclic Cellular Automaton.

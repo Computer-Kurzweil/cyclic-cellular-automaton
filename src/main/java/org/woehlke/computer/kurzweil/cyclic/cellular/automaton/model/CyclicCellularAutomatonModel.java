@@ -2,6 +2,7 @@ package org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model;
 
 import lombok.Getter;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.config.ComputerKurzweilProperties;
+import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.neighbourhood.LatticeNeighbourhood;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.CyclicCellularAutomatonFrame;
 import org.woehlke.computer.kurzweil.cyclic.cellular.automaton.view.canvas.ColorScheme;
 
@@ -10,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-import static org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.LatticeNeighbourhood.*;
+import static org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.neighbourhood.LatticeNeighbourhood.*;
 
 /**
  * Cyclic Cellular Automaton.
@@ -25,7 +26,7 @@ import static org.woehlke.computer.kurzweil.cyclic.cellular.automaton.model.Latt
  */
 public class CyclicCellularAutomatonModel implements Serializable {
 
-    private static final long serialVersionUID = -594681595882016258L;
+    static final long serialVersionUID = -594681595882016258L;
 
     private Random random;
 
