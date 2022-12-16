@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.woehlke.computer.kurzweil</groupId>
@@ -8,19 +9,23 @@
     <packaging>jar</packaging>
 
     <name>Cyclic Cellular Automaton (Demon)</name>
-    <description>The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by several other cellular automaton researchers.
-        In this system, each cell remains unchanged until some neighboring cell has a modular value exactly one unit larger than that of the cell itself, at which point it copies its neighbor's value.
-        One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic cellular automata in higher dimensions exhibit complex spiraling behavior.
+    <description>The cyclic cellular automaton is a cellular automaton rule developed by David Griffeath and studied by
+        several other cellular automaton researchers.
+        In this system, each cell remains unchanged until some neighboring cell has a modular value exactly one unit
+        larger than that of the cell itself, at which point it copies its neighbor's value.
+        One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic
+        cellular automata in higher dimensions exhibit complex spiraling behavior.
     </description>
-    <url>https://woehlke.org/p/cyclic-cellular-automaton</url>
+    <url>https://java.woehlke.org/cyclic-cellular-automaton</url>
     <inceptionYear>2013</inceptionYear>
 
     <scm>
         <url>https://github.com/Computer-Kurzweil/cyclic-cellular-automaton.git</url>
         <connection>scm:git:git@github.com:Computer-Kurzweil/cyclic-cellular-automaton.git</connection>
-        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/cyclic-cellular-automaton.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <developerConnection>scm:git:git@github.com:Computer-Kurzweil/cyclic-cellular-automaton.git
+        </developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <issueManagement>
         <url>https://github.com/Computer-Kurzweil/cyclic-cellular-automaton/issues/</url>
@@ -35,7 +40,7 @@
         <snapshotRepository>
             <id>snapshots</id>
             <name>tw-thinkpad-snapshots</name>
-            <url>file://${user.home}/public_html/java/libs-release-local/</url>
+            <url>file://${user.home}/public_html/java/libs-snapshots-local/</url>
         </snapshotRepository>
         <repository>
             <id>central</id>
@@ -264,7 +269,9 @@
         <version.lombok>1.18.24</version.lombok>
         <version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
 
-        <applicationMainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</applicationMainClass>
+        <applicationMainClass>
+            org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication
+        </applicationMainClass>
 
     </properties>
 
@@ -808,7 +815,9 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources install site site:deploy exec:java</defaultGoal>
+        <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources install site site:deploy
+            exec:java
+        </defaultGoal>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -1024,7 +1033,9 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication</mainClass>
+                    <mainClass>
+                        org.woehlke.computer.kurzweil.cyclic.cellular.automaton.CyclicCellularAutomatonApplication
+                    </mainClass>
                 </configuration>
             </plugin>
             <plugin>
@@ -1175,7 +1186,9 @@
             </properties>
             <build>
                 <finalName>${project.artifactId}</finalName>
-                <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources install site site:deploy exec:java</defaultGoal>
+                <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources install site
+                    site:deploy exec:java
+                </defaultGoal>
             </build>
         </profile>
 
@@ -1189,7 +1202,9 @@
             </properties>
             <build>
                 <finalName>${project.artifactId}</finalName>
-                <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources install site site:deploy</defaultGoal>
+                <defaultGoal>clean dependency:resolve dependency:resolve-plugins dependency:sources install site
+                    site:deploy
+                </defaultGoal>
             </build>
         </profile>
 
