@@ -8,7 +8,6 @@
         <version>1.0.0</version>
     </parent>
 
-    <groupId>org.woehlke.computer.kurzweil</groupId>
     <artifactId>cyclic-cellular-automaton</artifactId>
     <version>3.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
