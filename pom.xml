@@ -20,7 +20,7 @@
         One-dimensional cyclic cellular automata can be interpreted as systems of interacting particles, while cyclic
         cellular automata in higher dimensions exhibit complex spiraling behavior.
     </description>
-    <url>https://java.woehlke.org/cyclic-cellular-automaton</url>
+    <url>https://java.woehlke.org/kurzweil/cyclic-cellular-automaton</url>
     <inceptionYear>2013</inceptionYear>
 
     <scm>
@@ -38,7 +38,7 @@
     <distributionManagement>
         <site>
             <id>simulatedevolution.local</id>
-            <url>file://${user.home}/public_html/java/cyclic-cellular-automaton</url>
+            <url>file://${user.home}/public_html/java/kurzweil/cyclic-cellular-automaton</url>
         </site>
         <snapshotRepository>
             <id>snapshots</id>
